@@ -32,7 +32,6 @@
             z-index: -1;
         }
 
-        /* VIP Animations */
         @keyframes vipFloat {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-6px); }
@@ -45,7 +44,6 @@
             100% { text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055; box-shadow: 0 0 15px rgba(255, 0, 85, 0.4); }
         }
 
-        /* Common Screen Layout */
         .screen {
             width: 100%;
             max-width: 400px;
@@ -86,7 +84,6 @@
             box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
         }
 
-        /* Gate Boxes */
         .box-card {
             width: 100%;
             background: rgba(20, 20, 25, 0.95);
@@ -103,7 +100,6 @@
 
         .title-text { font-size: 17px; font-weight: 900; color: #00f0ff; margin-bottom: 10px; }
 
-        /* Payment Buttons */
         .upi-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -125,7 +121,6 @@
         .paytm-btn { background: #00b9f1; color: #000; }
         .navi-btn { background: #00c853; }
 
-        /* Inputs & Buttons */
         .input-box {
             width: 100%;
             padding: 12px;
@@ -152,14 +147,15 @@
             text-decoration: none;
             transition: 0.3s;
             margin-bottom: 8px;
+            text-align: center;
         }
         .action-btn:active { transform: scale(0.96); }
 
         .btn-vip-unlock { background: linear-gradient(90deg, #10b981, #059669); box-shadow: 0 0 15px rgba(16, 185, 129, 0.5); }
         .btn-free-gen { background: linear-gradient(90deg, #3b82f6, #1d4ed8); }
+        .btn-free-how { background: linear-gradient(90deg, #d97706, #b45309); }
         .btn-free-login { background: linear-gradient(90deg, #9333ea, #c084fc); }
 
-        /* App Cards for Store */
         .section-title {
             font-size: 20px;
             font-weight: 800;
@@ -186,27 +182,26 @@
             height: 140px;
             object-fit: cover;
             border-radius: 10px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .app-title {
             font-size: 18px;
             font-weight: 800;
             color: #ffffff;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .dl-direct {
             background: linear-gradient(90deg, #10b981, #059669);
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.5);
         }
 
         .dl-shrink {
             background: linear-gradient(90deg, #ff0055, #ff5500);
-            box-shadow: 0 4px 15px rgba(255, 0, 85, 0.4);
+            box-shadow: 0 4px 15px rgba(255, 0, 85, 0.5);
         }
 
-        /* 18+ Section */
         .adult-section {
             border: 2px solid #ff0000;
             border-radius: 16px;
@@ -236,7 +231,26 @@
             font-weight: 800;
             font-size: 15px;
             border-radius: 12px;
-            margin-top: 20px;
+            margin-top: 15px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(253, 29, 29, 0.5);
+        }
+
+        .kodular-app-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(90deg, #00f0ff, #0077ff);
+            color: #000;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 15px;
+            border-radius: 12px;
+            margin-top: 10px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
         }
     </style>
 </head>
@@ -244,15 +258,15 @@
 
     <div class="overlay"></div>
 
-    <!-- ================= SCREEN 1: LOGIN & GATEWAY ================= -->
+    <!-- ================= SCREEN 1: GATEWAY ================= -->
     <div id="screenGateway" class="screen">
         <div class="top-badge-1">DIKSHA STORE 09 VIP GATEWAY</div>
         <div class="top-badge-2">⚡ CHOOSE YOUR ACCESS MODE BELOW ⚡</div>
 
-        <!-- GATE 1: VIP ACCESS (₹20 DIRECT DOWNLOAD) -->
+        <!-- GATE 1: VIP ACCESS (₹20 DIRECT) -->
         <div class="box-card vip-box">
-            <div class="title-text" style="color: #a855f7;">👑 VIP ACCESS (INSTANT DIRECT DOWNLOAD)</div>
-            <p style="font-size: 12px; color: #ccc; margin-bottom: 10px;">Pay ₹20 & enter UTR to get Direct Links without ads!</p>
+            <div class="title-text" style="color: #a855f7;">👑 VIP ACCESS (INSTANT MEDIAFIRE LINK)</div>
+            <p style="font-size: 12px; color: #ccc; margin-bottom: 10px;">Pay ₹20 & enter UTR to get Direct Downloads!</p>
             
             <div class="upi-grid">
                 <a href="upi://pay?pa=YOUR_UPI_ID@paytm&pn=DikshaStore&am=20.00&cu=INR" class="upi-btn phonepe-btn">PhonePe</a>
@@ -265,114 +279,291 @@
             <button onclick="unlockVIP()" class="action-btn btn-vip-unlock">VERIFY UTR & UNLOCK VIP 🔓</button>
         </div>
 
-        <!-- GATE 2: FREE ACCESS (SHRINKME PASSWORD GENERATE) -->
+        <!-- GATE 2: FREE ACCESS (GOOGLE SCRIPT & YOUTUBE GUIDE) -->
         <div class="box-card free-box">
-            <div class="title-text">🎁 FREE ACCESS (SHRINKME LINK DOWNLOAD)</div>
-            <p style="font-size: 12px; color: #ccc; margin-bottom: 10px;">Generate daily password via ShrinkMe to unlock Free Access.</p>
+            <div class="title-text">🎁 FREE ACCESS (PASSWORD LOGIN)</div>
+            <p style="font-size: 12px; color: #ccc; margin-bottom: 10px;">Generate daily password (changes every 24 hours).</p>
             
-            <a href="YOUR_SHRINKME_PASSWORD_LINK_HERE" target="_blank" class="action-btn btn-free-gen">
-                GENERATE PASSWORD (SHRINKME) 🔑
+            <!-- GENERATE PASSWORD (Google Script Link) -->
+            <a href="https://script.google.com/macros/s/AKfycbxRGUCPTuElwAUO15otvo9AxNdkv2RKFSjdocacd21n4hVvuRAVgOsAfrScMkX_5qET/exec" target="_blank" class="action-btn btn-free-gen">
+                GENERATE PASSWORD 🔑
             </a>
 
-            <input type="password" id="passBox" class="input-box" style="border-color: #00f0ff;" placeholder="Enter Today's Password...">
+            <!-- HOW TO GENERATE PASSWORD (YouTube Video Link) -->
+            <a href="YOUR_YOUTUBE_VIDEO_LINK_HERE" target="_blank" class="action-btn btn-free-how">
+                HOW GENERATE PASSWORD - पासवर्ड कैसे जनरेट करें 📺
+            </a>
+
+            <input type="password" id="passBox" class="input-box" style="border-color: #00f0ff; margin-top: 8px;" placeholder="Enter Today's Password...">
             <button onclick="unlockFree()" class="action-btn btn-free-login">LOGIN FREE STORE 🚀</button>
         </div>
 
-        <a href="YOUR_INSTAGRAM_LINK_HERE" class="insta-btn" target="_blank">
-            JOIN INSTAGRAM (diksha_agrawal__09)
+        <!-- Instagram Profile Link -->
+        <a href="https://www.instagram.com/diksha_agrawal__09?psln=M2MwcmZrZGtxNHF2" class="insta-btn" target="_blank">
+            CLICK TO JOIN INSTAGRAM ( diksha_agrawal__09 )
+        </a>
+
+        <!-- Kodular App: DIKSHA MOD 09 Download Button -->
+        <a href="YOUR_KODULAR_APP_DOWNLOAD_LINK_HERE" class="kodular-app-btn" target="_blank">
+            📥 DOWNLOAD DIKSHA MOD 09 APP
         </a>
     </div>
 
-    <!-- ================= SCREEN 2: STORE PAGE (DYNAMIC LOAD) ================= -->
+    <!-- ================= SCREEN 2: STORE PAGE (ALL 23 APPS + LOGOS) ================= -->
     <div id="screenStore" class="screen hidden">
         
-        <!-- Status Bar -->
         <div id="statusBadge" class="top-badge-1">STORE LOADED</div>
 
         <div class="section-title">--- PREMIUM APPS ---</div>
 
         <!-- 1. Pocket FM -->
         <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/bMyB1b9v/IMG-2e37390f-5416-4c05-a0b2-92c5845a6b82.jpg" alt="Banner">
+            <img class="banner-img" src="https://i.ibb.co/bMyB1b9v/IMG-2e37390f-5416-4c05-a0b2-92c5845a6b82.jpg" alt="Pocket FM">
             <div class="app-title">POCKET FM PREMIUM</div>
             <a id="link_pocketfm" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
         </div>
 
         <!-- 2. Kuku TV -->
         <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/W4gVfVc0/IMG-948bd26f-6604-4efe-b6cd-3e8c717bcd1b.jpg" alt="Banner">
+            <img class="banner-img" src="https://i.ibb.co/W4gVfVc0/IMG-948bd26f-6604-4efe-b6cd-3e8c717bcd1b.jpg" alt="Kuku TV">
             <div class="app-title">KUKU TV PREMIUM</div>
             <a id="link_kukutv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
         </div>
 
         <!-- 3. Quik TV -->
         <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/TqBtYmcd/IMG-a3c52f4c-e8b0-4c56-a2c8-90e37c18ff25.jpg" alt="Banner">
+            <img class="banner-img" src="https://i.ibb.co/TqBtYmcd/IMG-a3c52f4c-e8b0-4c56-a2c8-90e37c18ff25.jpg" alt="Quik TV">
             <div class="app-title">QUIK TV PREMIUM</div>
             <a id="link_quiktv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
         </div>
 
-        <!-- 18+ SECTION -->
+        <!-- 4. Story TV -->
+        <div class="app-card">
+            <img class="banner-img" src="https://i.ibb.co/YswNK3m/IMG-26f7afd0-86dc-457f-8ee9-ed9309d0cf1f.png" alt="Story TV">
+            <div class="app-title">STORY TV PREMIUM</div>
+            <a id="link_storytv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+        </div>
+
+        <!-- 5. Net Short -->
+        <div class="app-card">
+            <img class="banner-img" src="https://i.ibb.co/CK7C2H12/IMG-b64fb8c2-8907-4b37-9280-757e580babe3.jpg" alt="Net Short">
+            <div class="app-title">NET SHORT PREMIUM</div>
+            <a id="link_netshort" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+        </div>
+
+        <!-- 6. Dash Reel -->
+        <div class="app-card">
+            <img class="banner-img" src="https://i.ibb.co/8DdVtRfz/IMG-2cbc2dc4-6be6-48e8-b0f1-920aad84bc8c.jpg" alt="Dash Reel">
+            <div class="app-title">DASH REEL PREMIUM</div>
+            <a id="link_dashreel" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+        </div>
+
+        <!-- 7. Anime TV -->
+        <div class="app-card">
+            <img class="banner-img" src="https://via.placeholder.com/350x140/6366f1/ffffff?text=ANIME+TV" alt="Anime TV">
+            <div class="app-title">ANIME TV PREMIUM</div>
+            <a id="link_animetv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+        </div>
+
+        <!-- 8. Rigi TV -->
+        <div class="app-card">
+            <img class="banner-img" src="https://via.placeholder.com/350x140/14b8a6/ffffff?text=RIGI+TV" alt="Rigi TV">
+            <div class="app-title">RIGI TV PREMIUM</div>
+            <a id="link_rigitv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+        </div>
+
+        <!-- 9. Apple TV -->
+        <div class="app-card">
+            <img class="banner-img" src="https://via.placeholder.com/350x140/333333/ffffff?text=APPLE+TV" alt="Apple TV">
+            <div class="app-title">APPLE TV PREMIUM</div>
+            <a id="link_appletv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+        </div>
+
+        <!-- 10. Prime Video -->
+        <div class="app-card">
+            <img class="banner-img" src="https://via.placeholder.com/350x140/00a8e1/ffffff?text=PRIME+VIDEO" alt="Prime Video">
+            <div class="app-title">PRIME VIDEO PREMIUM</div>
+            <a id="link_primevideo" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+        </div>
+
+        <!-- 11. Vertigo TV -->
+        <div class="app-card">
+            <img class="banner-img" src="https://via.placeholder.com/350x140/a855f7/ffffff?text=VERTIGO+TV" alt="Vertigo TV">
+            <div class="app-title">VERTIGO TV PREMIUM</div>
+            <a id="link_vertigotv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+        </div>
+
+        <!-- 12. Drama Wave -->
+        <div class="app-card">
+            <img class="banner-img" src="https://via.placeholder.com/350x140/ef4444/ffffff?text=DRAMA+WAVE" alt="Drama Wave">
+            <div class="app-title">DRAMA WAVE PREMIUM</div>
+            <a id="link_dramawave" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+        </div>
+
+        <!-- 13. Alight Motion -->
+        <div class="app-card">
+            <img class="banner-img" src="https://via.placeholder.com/350x140/22c55e/ffffff?text=ALIGHT+MOTION" alt="Alight Motion">
+            <div class="app-title">ALIGHT MOTION PREMIUM</div>
+            <a id="link_alightmotion" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+        </div>
+
+        <!-- 14. Fake Paytm -->
+        <div class="app-card">
+            <img class="banner-img" src="https://via.placeholder.com/350x140/002e6e/ffffff?text=FAKE+PAYTM" alt="Fake Paytm">
+            <div class="app-title">FAKE PAYTM PREMIUM</div>
+            <a id="link_fakepaytm" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+        </div>
+
+        <!-- 15. Reelies App -->
+        <div class="app-card">
+            <img class="banner-img" src="https://via.placeholder.com/350x140/e11d48/ffffff?text=REELIES+APP" alt="Reelies App">
+            <div class="app-title">REELIES APP PREMIUM</div>
+            <a id="link_reelies" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+        </div>
+
+        <!-- 16. Netflix -->
+        <div class="app-card">
+            <img class="banner-img" src="https://via.placeholder.com/350x140/e50914/ffffff?text=NETFLIX" alt="Netflix">
+            <div class="app-title">NETFLIX PREMIUM</div>
+            <a id="link_netflix" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+        </div>
+
+        <!-- 17. Workout App -->
+        <div class="app-card">
+            <img class="banner-img" src="https://via.placeholder.com/350x140/84cc16/ffffff?text=WORKOUT+APP" alt="Workout App">
+            <div class="app-title">WORKOUT APP PREMIUM</div>
+            <a id="link_workout" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+        </div>
+
+        <!-- 18+ VIP SECTION -->
         <div class="adult-section">
             <div class="adult-header">ONLY 18+ VISIT</div>
 
             <!-- 1. Cine18+ -->
             <div class="app-card">
-                <img class="banner-img" src="https://via.placeholder.com/350x140/991b1b/ffffff?text=CINE18%2B" alt="Banner">
+                <img class="banner-img" src="https://via.placeholder.com/350x140/991b1b/ffffff?text=CINE18%2B" alt="Cine18+">
                 <div class="app-title">CINE18+ PREMIUM</div>
                 <a id="link_cine18" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
             </div>
+
+            <!-- 2. Green Masti 18+ -->
+            <div class="app-card">
+                <img class="banner-img" src="https://via.placeholder.com/350x140/15803d/ffffff?text=GREEN+MASTI+18%2B" alt="Green Masti">
+                <div class="app-title">GREEN MASTI 18+ PREMIUM</div>
+                <a id="link_greenmasti" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+            </div>
+
+            <!-- 3. Mood X 18+ -->
+            <div class="app-card">
+                <img class="banner-img" src="https://via.placeholder.com/350x140/b91c1c/ffffff?text=MOOD+X+18%2B" alt="Mood X">
+                <div class="app-title">MOOD X 18+ PREMIUM</div>
+                <a id="link_moodx" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+            </div>
+
+            <!-- 4. Moovlix 18+ -->
+            <div class="app-card">
+                <img class="banner-img" src="https://via.placeholder.com/350x140/7c2d12/ffffff?text=MOOVLIX+18%2B" alt="Moovlix">
+                <div class="app-title">MOOVLIX 18+ PREMIUM</div>
+                <a id="link_moovlix" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+            </div>
+
+            <!-- 5. Stream Luna 18+ -->
+            <div class="app-card">
+                <img class="banner-img" src="https://via.placeholder.com/350x140/4c1d95/ffffff?text=STREAM+LUNA+18%2B" alt="Stream Luna">
+                <div class="app-title">STREAM LUNA 18+ PREMIUM</div>
+                <a id="link_streamluna" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+            </div>
+
+            <!-- 6. Titlee 18+ -->
+            <div class="app-card">
+                <img class="banner-img" src="https://via.placeholder.com/350x140/be123c/ffffff?text=TITLEE+18%2B" alt="Titlee">
+                <div class="app-title">TITLEE 18+ PREMIUM</div>
+                <a id="link_titlee" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
+            </div>
         </div>
 
-        <a href="YOUR_INSTAGRAM_LINK_HERE" class="insta-btn" target="_blank">
-            JOIN INSTAGRAM (diksha_agrawal__09)
+        <a href="https://instagram.com/diksha_agrawal__09" class="insta-btn" target="_blank" style="margin-top: 20px;">
+            CLICK TO JOIN INSTAGRAM ( diksha_agrawal__09 )
         </a>
     </div>
 
     <script>
-        // === LINKS DATABASE ===
-        // VIP Users ke liye Direct Download Links
+        // === VIP DIRECT LINKS (MEDIAFIRE) ===
         const VIP_LINKS = {
-            pocketfm: "https://direct-download-link.com/pocketfm.apk",
-            kukutv: "https://direct-download-link.com/kukutv.apk",
-            quiktv: "https://direct-download-link.com/quiktv.apk",
-            cine18: "https://direct-download-link.com/cine18.apk"
+            pocketfm: "MEDIAFIRE_LINK_HERE",
+            kukutv: "MEDIAFIRE_LINK_HERE",
+            quiktv: "MEDIAFIRE_LINK_HERE",
+            storytv: "MEDIAFIRE_LINK_HERE",
+            netshort: "MEDIAFIRE_LINK_HERE",
+            dashreel: "MEDIAFIRE_LINK_HERE",
+            animetv: "MEDIAFIRE_LINK_HERE",
+            rigitv: "MEDIAFIRE_LINK_HERE",
+            appletv: "MEDIAFIRE_LINK_HERE",
+            primevideo: "MEDIAFIRE_LINK_HERE",
+            vertigotv: "MEDIAFIRE_LINK_HERE",
+            dramawave: "MEDIAFIRE_LINK_HERE",
+            alightmotion: "MEDIAFIRE_LINK_HERE",
+            fakepaytm: "MEDIAFIRE_LINK_HERE",
+            reelies: "MEDIAFIRE_LINK_HERE",
+            netflix: "MEDIAFIRE_LINK_HERE",
+            workout: "MEDIAFIRE_LINK_HERE",
+            cine18: "MEDIAFIRE_LINK_HERE",
+            greenmasti: "MEDIAFIRE_LINK_HERE",
+            moodx: "MEDIAFIRE_LINK_HERE",
+            moovlix: "MEDIAFIRE_LINK_HERE",
+            streamluna: "MEDIAFIRE_LINK_HERE",
+            titlee: "MEDIAFIRE_LINK_HERE"
         };
 
-        // Free Users ke liye ShrinkMe Shortened Links
+        // === FREE SHORT LINKS (SHRINKME) ===
         const FREE_LINKS = {
-            pocketfm: "https://shrinkme.io/your_pocketfm_short_link",
-            kukutv: "https://shrinkme.io/your_kukutv_short_link",
-            quiktv: "https://shrinkme.io/your_quiktv_short_link",
-            cine18: "https://shrinkme.io/your_cine18_short_link"
+            pocketfm: "SHRINKME_LINK_HERE",
+            kukutv: "SHRINKME_LINK_HERE",
+            quiktv: "SHRINKME_LINK_HERE",
+            storytv: "SHRINKME_LINK_HERE",
+            netshort: "SHRINKME_LINK_HERE",
+            dashreel: "SHRINKME_LINK_HERE",
+            animetv: "SHRINKME_LINK_HERE",
+            rigitv: "SHRINKME_LINK_HERE",
+            appletv: "SHRINKME_LINK_HERE",
+            primevideo: "SHRINKME_LINK_HERE",
+            vertigotv: "SHRINKME_LINK_HERE",
+            dramawave: "SHRINKME_LINK_HERE",
+            alightmotion: "SHRINKME_LINK_HERE",
+            fakepaytm: "SHRINKME_LINK_HERE",
+            reelies: "SHRINKME_LINK_HERE",
+            netflix: "SHRINKME_LINK_HERE",
+            workout: "SHRINKME_LINK_HERE",
+            cine18: "SHRINKME_LINK_HERE",
+            greenmasti: "SHRINKME_LINK_HERE",
+            moodx: "SHRINKME_LINK_HERE",
+            moovlix: "SHRINKME_LINK_HERE",
+            streamluna: "SHRINKME_LINK_HERE",
+            titlee: "SHRINKME_LINK_HERE"
         };
 
-        // Today's Password for Free Access
         const DAILY_PASSWORD = "DIKSHA2026";
 
-        // Function 1: VIP Access (12-Digit UTR Check)
         function unlockVIP() {
             let utr = document.getElementById('utrBox').value.trim();
             if(utr.length === 12 && !isNaN(utr)) {
-                alert("🎉 Payment Verified! VIP Access Unlocked with Direct Links.");
+                alert("🎉 Payment Verified! VIP Access Unlocked with MediaFire Direct Links.");
                 loadStore('VIP');
             } else {
                 alert("❌ Invalid UTR! Please enter a valid 12-digit UTR number after ₹20 payment.");
             }
         }
 
-        // Function 2: Free Access (Password Check)
         function unlockFree() {
             let pass = document.getElementById('passBox').value.trim();
             if(pass === DAILY_PASSWORD) {
-                alert("✅ Free Password Accepted! Store Unlocked (Links will redirect via ShrinkMe).");
+                alert("✅ Password Accepted! Store Unlocked (Downloads via ShrinkMe).");
                 loadStore('FREE');
             } else {
-                alert("❌ Wrong Password! Click 'GENERATE PASSWORD (SHRINKME)' to get today's password.");
+                alert("❌ Wrong Password! Click 'GENERATE PASSWORD' to get today's password.");
             }
         }
 
-        // Function 3: Load Store dynamically according to mode
         function loadStore(mode) {
             document.getElementById('screenGateway').classList.add('hidden');
             document.getElementById('screenStore').classList.remove('hidden');
@@ -380,10 +571,9 @@
             let badge = document.getElementById('statusBadge');
             
             if(mode === 'VIP') {
-                badge.innerText = "👑 VIP UNLOCKED - DIRECT DOWNLOAD ACCESS";
+                badge.innerText = "👑 VIP UNLOCKED - DIRECT DOWNLOAD NOW";
                 badge.style.background = "linear-gradient(90deg, #10b981, #059669)";
 
-                // Set Direct Links & Green Buttons
                 for(let key in VIP_LINKS) {
                     let el = document.getElementById('link_' + key);
                     if(el) {
@@ -393,10 +583,9 @@
                     }
                 }
             } else {
-                badge.innerText = "🎁 FREE UNLOCKED - SHRINKME LINK DOWNLOAD";
+                badge.innerText = "🎁 FREE UNLOCKED - SHRINKME DOWNLOAD";
                 badge.style.background = "linear-gradient(90deg, #ff0055, #ff5500)";
 
-                // Set ShrinkMe Links & Orange/Red Buttons
                 for(let key in FREE_LINKS) {
                     let el = document.getElementById('link_' + key);
                     if(el) {
