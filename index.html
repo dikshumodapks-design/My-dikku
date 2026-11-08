@@ -34,8 +34,24 @@
 
         @keyframes vipFloat {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
+            50% { transform: translateY(-5px); }
             100% { transform: translateY(0px); }
+        }
+
+        /* Neon Edge Glowing Border Animation */
+        @keyframes neonBorderGlow {
+            0% {
+                border-color: #ff0055;
+                box-shadow: 0 0 8px #ff0055, inset 0 0 8px rgba(255, 0, 85, 0.3);
+            }
+            50% {
+                border-color: #00f0ff;
+                box-shadow: 0 0 15px #00f0ff, inset 0 0 12px rgba(0, 240, 255, 0.5);
+            }
+            100% {
+                border-color: #ff0055;
+                box-shadow: 0 0 8px #ff0055, inset 0 0 8px rgba(255, 0, 85, 0.3);
+            }
         }
 
         @keyframes vipGlow {
@@ -46,7 +62,7 @@
 
         .screen {
             width: 100%;
-            max-width: 400px;
+            max-width: 380px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -59,13 +75,13 @@
         .top-badge-1 {
             background: linear-gradient(90deg, #ff0055, #ff5500);
             color: #fff;
-            padding: 12px 15px;
+            padding: 10px 15px;
             border-radius: 12px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 900;
             text-align: center;
             width: 100%;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             animation: vipFloat 3s ease-in-out infinite, vipGlow 2s infinite;
         }
 
@@ -73,13 +89,13 @@
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid #00f0ff;
             color: #00f0ff;
-            padding: 10px 15px;
+            padding: 8px 12px;
             border-radius: 10px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             text-align: center;
             width: 100%;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             animation: vipFloat 3.5s ease-in-out infinite;
             box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
         }
@@ -87,33 +103,33 @@
         .box-card {
             width: 100%;
             background: rgba(20, 20, 25, 0.95);
-            border-radius: 16px;
-            padding: 18px;
-            margin-bottom: 20px;
+            border-radius: 14px;
+            padding: 15px;
+            margin-bottom: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
             text-align: center;
             animation: vipFloat 4s ease-in-out infinite;
         }
 
-        .vip-box { border: 2px solid #9333ea; box-shadow: 0 0 25px rgba(147, 51, 234, 0.4); }
-        .free-box { border: 2px solid #00f0ff; box-shadow: 0 0 20px rgba(0, 240, 255, 0.3); }
+        .vip-box { border: 2px solid #9333ea; }
+        .free-box { border: 2px solid #00f0ff; }
 
-        .title-text { font-size: 17px; font-weight: 900; color: #00f0ff; margin-bottom: 10px; }
+        .title-text { font-size: 15px; font-weight: 900; color: #00f0ff; margin-bottom: 8px; }
 
         .upi-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 12px;
+            gap: 8px;
+            margin-bottom: 10px;
         }
 
         .upi-btn {
-            padding: 10px;
-            border-radius: 8px;
+            padding: 8px;
+            border-radius: 6px;
             text-decoration: none;
             color: white;
             font-weight: 800;
-            font-size: 13px;
+            font-size: 12px;
             text-align: center;
         }
         .gpay-btn { background: #1a73e8; }
@@ -123,117 +139,119 @@
 
         .input-box {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             background: rgba(10, 10, 15, 0.9);
             border: 2px solid #a855f7;
-            border-radius: 10px;
+            border-radius: 8px;
             color: #fff;
-            font-size: 15px;
+            font-size: 14px;
             text-align: center;
             outline: none;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .action-btn {
             display: block;
             width: 100%;
-            padding: 12px 0;
+            padding: 10px 0;
             color: white;
             font-weight: 900;
-            font-size: 15px;
+            font-size: 14px;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
             text-decoration: none;
             transition: 0.3s;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-align: center;
         }
         .action-btn:active { transform: scale(0.96); }
 
-        .btn-vip-unlock { background: linear-gradient(90deg, #10b981, #059669); box-shadow: 0 0 15px rgba(16, 185, 129, 0.5); }
+        .btn-vip-unlock { background: linear-gradient(90deg, #10b981, #059669); }
         .btn-free-gen { background: linear-gradient(90deg, #3b82f6, #1d4ed8); }
-        .btn-free-how { background: linear-gradient(90deg, #d97706, #b45309); }
+        .btn-free-how { background: linear-gradient(90deg, #d97706, #b45309); font-size: 13px; }
         .btn-free-login { background: linear-gradient(90deg, #9333ea, #c084fc); }
 
         .section-title {
-            font-size: 20px;
+            font-size: 17px;
             font-weight: 800;
             color: #00f0ff;
-            margin: 20px 0 15px 0;
+            margin: 15px 0 10px 0;
             text-align: center;
             text-transform: uppercase;
             text-shadow: 0 0 10px #00f0ff;
         }
 
+        /* Compact & Neon Glowing Edges for App Cards */
         .app-card {
             background: #141419;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
-            padding: 15px;
-            margin-bottom: 20px;
+            border: 2px solid #ff0055;
+            border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 14px;
             width: 100%;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
             text-align: center;
+            animation: vipFloat 4s ease-in-out infinite, neonBorderGlow 3s infinite;
         }
 
         .banner-img {
             width: 100%;
-            height: 140px;
+            height: 100px;
             object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
         }
 
         .app-title {
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 800;
             color: #ffffff;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .dl-direct {
             background: linear-gradient(90deg, #10b981, #059669);
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.5);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
         }
 
         .dl-shrink {
             background: linear-gradient(90deg, #ff0055, #ff5500);
-            box-shadow: 0 4px 15px rgba(255, 0, 85, 0.5);
+            box-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
         }
 
         .adult-section {
             border: 2px solid #ff0000;
-            border-radius: 16px;
-            padding: 15px;
+            border-radius: 14px;
+            padding: 12px;
             width: 100%;
             background: rgba(255, 0, 0, 0.03);
-            margin-top: 15px;
+            margin-top: 12px;
         }
 
         .adult-header {
             color: #ff0000;
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 900;
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
-        .insta-btn {
+        .telegram-btn {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 14px;
-            background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045);
+            padding: 12px;
+            background: linear-gradient(90deg, #0088cc, #005f99);
             color: white;
             text-decoration: none;
             font-weight: 800;
-            font-size: 15px;
-            border-radius: 12px;
-            margin-top: 15px;
+            font-size: 14px;
+            border-radius: 10px;
+            margin-top: 12px;
             text-align: center;
-            box-shadow: 0 0 15px rgba(253, 29, 29, 0.5);
+            box-shadow: 0 0 15px rgba(0, 136, 204, 0.6);
+            animation: vipFloat 3.5s ease-in-out infinite;
         }
 
         .kodular-app-btn {
@@ -241,16 +259,17 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             background: linear-gradient(90deg, #00f0ff, #0077ff);
             color: #000;
             text-decoration: none;
             font-weight: 900;
-            font-size: 15px;
-            border-radius: 12px;
-            margin-top: 10px;
+            font-size: 14px;
+            border-radius: 10px;
+            margin-top: 8px;
             text-align: center;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+            animation: vipFloat 3.8s ease-in-out infinite;
         }
     </style>
 </head>
@@ -266,7 +285,7 @@
         <!-- GATE 1: VIP ACCESS (₹20 DIRECT) -->
         <div class="box-card vip-box">
             <div class="title-text" style="color: #a855f7;">👑 VIP ACCESS (INSTANT MEDIAFIRE LINK)</div>
-            <p style="font-size: 12px; color: #ccc; margin-bottom: 10px;">Pay ₹20 & enter UTR to get Direct Downloads!</p>
+            <p style="font-size: 11px; color: #ccc; margin-bottom: 8px;">Pay ₹20 & enter UTR to get Direct Downloads!</p>
             
             <div class="upi-grid">
                 <a href="upi://pay?pa=YOUR_UPI_ID@paytm&pn=DikshaStore&am=20.00&cu=INR" class="upi-btn phonepe-btn">PhonePe</a>
@@ -282,10 +301,10 @@
         <!-- GATE 2: FREE ACCESS (GOOGLE SCRIPT & YOUTUBE GUIDE) -->
         <div class="box-card free-box">
             <div class="title-text">🎁 FREE ACCESS (PASSWORD LOGIN)</div>
-            <p style="font-size: 12px; color: #ccc; margin-bottom: 10px;">Generate daily password (changes every 24 hours).</p>
+            <p style="font-size: 11px; color: #ccc; margin-bottom: 8px;">Generate daily password (changes every 24 hours).</p>
             
             <!-- GENERATE PASSWORD (Google Script Link) -->
-            <a href="https://script.google.com/macros/s/AKfycbxRGUCPTuElwAUO15otvo9AxNdkv2RKFSjdocacd21n4hVvuRAVgOsAfrScMkX_5qET/exec" target="_blank" class="action-btn btn-free-gen">
+            <a href="YOUR_GOOGLE_SCRIPT_LINK_HERE" target="_blank" class="action-btn btn-free-gen">
                 GENERATE PASSWORD 🔑
             </a>
 
@@ -294,13 +313,13 @@
                 HOW GENERATE PASSWORD - पासवर्ड कैसे जनरेट करें 📺
             </a>
 
-            <input type="password" id="passBox" class="input-box" style="border-color: #00f0ff; margin-top: 8px;" placeholder="Enter Today's Password...">
+            <input type="password" id="passBox" class="input-box" style="border-color: #00f0ff; margin-top: 6px;" placeholder="Enter Today's Password...">
             <button onclick="unlockFree()" class="action-btn btn-free-login">LOGIN FREE STORE 🚀</button>
         </div>
 
-        <!-- Instagram Profile Link -->
-        <a href="https://www.instagram.com/diksha_agrawal__09?psln=M2MwcmZrZGtxNHF2" class="insta-btn" target="_blank">
-            CLICK TO JOIN INSTAGRAM ( diksha_agrawal__09 )
+        <!-- Telegram Join Button -->
+        <a href="YOUR_TELEGRAM_CHANNEL_LINK_HERE" class="telegram-btn" target="_blank">
+            📢 JOIN TO TELEGRAM FOR MORE UPDATES
         </a>
 
         <!-- Kodular App: DIKSHA MOD 09 Download Button -->
@@ -309,7 +328,7 @@
         </a>
     </div>
 
-    <!-- ================= SCREEN 2: STORE PAGE (ALL 23 APPS + LOGOS) ================= -->
+    <!-- ================= SCREEN 2: STORE PAGE ================= -->
     <div id="screenStore" class="screen hidden">
         
         <div id="statusBadge" class="top-badge-1">STORE LOADED</div>
@@ -482,8 +501,8 @@
             </div>
         </div>
 
-        <a href="https://instagram.com/diksha_agrawal__09" class="insta-btn" target="_blank" style="margin-top: 20px;">
-            CLICK TO JOIN INSTAGRAM ( diksha_agrawal__09 )
+        <a href="YOUR_TELEGRAM_CHANNEL_LINK_HERE" class="telegram-btn" target="_blank" style="margin-top: 15px;">
+            📢 JOIN TO TELEGRAM FOR MORE UPDATES
         </a>
     </div>
 
@@ -542,7 +561,29 @@
             titlee: "SHRINKME_LINK_HERE"
         };
 
-        const DAILY_PASSWORD = "DIKSHA2026";
+        // Google Apps Script se password verify karne ke liye function
+        async function unlockFree() {
+            let userPass = document.getElementById('passBox').value.trim();
+            if(!userPass) {
+                alert("Kripya password dalein!");
+                return;
+            }
+
+            // Jab aapko Google Apps Script se connect karna ho, toh niche fetch ka use kar sakte hain:
+            // let response = await fetch('YOUR_GOOGLE_SCRIPT_LINK_HERE?pass=' + userPass);
+            // let data = await response.json();
+            // if(data.success) { loadStore('FREE'); }
+
+            // Filhal aap yahan apna password direct check ya script link set kar sakte hain:
+            let correctPassword = prompt("Google Script connect karne ke liye, kya aapne script ka URL set kiya hai? (Temporary check ke liye apna active password enter karein):");
+
+            if(userPass === correctPassword) {
+                alert("✅ Free Store Unlocked!");
+                loadStore('FREE');
+            } else {
+                alert("❌ Wrong Password! Kripya 'GENERATE PASSWORD' button se aaj ka naya password nikalein.");
+            }
+        }
 
         function unlockVIP() {
             let utr = document.getElementById('utrBox').value.trim();
@@ -551,16 +592,6 @@
                 loadStore('VIP');
             } else {
                 alert("❌ Invalid UTR! Please enter a valid 12-digit UTR number after ₹20 payment.");
-            }
-        }
-
-        function unlockFree() {
-            let pass = document.getElementById('passBox').value.trim();
-            if(pass === DAILY_PASSWORD) {
-                alert("✅ Password Accepted! Store Unlocked (Downloads via ShrinkMe).");
-                loadStore('FREE');
-            } else {
-                alert("❌ Wrong Password! Click 'GENERATE PASSWORD' to get today's password.");
             }
         }
 
