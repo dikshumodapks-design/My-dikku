@@ -194,12 +194,15 @@
             animation: vipFloat 4s ease-in-out infinite, neonBorderGlow 3s infinite;
         }
 
+        /* Logo image setting fix: ab pura logo bina kate fit dikhega */
         .banner-img {
             width: 100%;
-            height: 100px;
-            object-fit: cover;
+            height: 110px;
+            object-fit: contain; /* Yeh ensure karega ki image zoom hokar kate nahi */
+            background: #0d0d12;   /* Logo ke aas-paas ka background clean dark rahega */
             border-radius: 8px;
             margin-bottom: 8px;
+            padding: 4px;
         }
 
         .app-title {
@@ -304,7 +307,7 @@
             <p style="font-size: 11px; color: #ccc; margin-bottom: 8px;">Generate daily password (changes every 24 hours).</p>
             
             <!-- GENERATE PASSWORD (Google Script Link) -->
-            <a href="YOUR_GOOGLE_SCRIPT_LINK_HERE" target="_blank" class="action-btn btn-free-gen">
+            <a href="https://script.google.com/macros/s/AKfycbxRGUCPTuElwAUO15otvo9AxNdkv2RKFSjdocacd21n4hVvuRAVgOsAfrScMkX_5qET/exec" target="_blank" class="action-btn btn-free-gen">
                 GENERATE PASSWORD 🔑
             </a>
 
@@ -561,21 +564,14 @@
             titlee: "SHRINKME_LINK_HERE"
         };
 
-        // Google Apps Script se password verify karne ke liye function
-        async function unlockFree() {
+        function unlockFree() {
             let userPass = document.getElementById('passBox').value.trim();
             if(!userPass) {
                 alert("Kripya password dalein!");
                 return;
             }
 
-            // Jab aapko Google Apps Script se connect karna ho, toh niche fetch ka use kar sakte hain:
-            // let response = await fetch('YOUR_GOOGLE_SCRIPT_LINK_HERE?pass=' + userPass);
-            // let data = await response.json();
-            // if(data.success) { loadStore('FREE'); }
-
-            // Filhal aap yahan apna password direct check ya script link set kar sakte hain:
-            let correctPassword = prompt("Google Script connect karne ke liye, kya aapne script ka URL set kiya hai? (Temporary check ke liye apna active password enter karein):");
+            let correctPassword = prompt("Testing ke liye aaj ka active password enter karein:");
 
             if(userPass === correctPassword) {
                 alert("✅ Free Store Unlocked!");
