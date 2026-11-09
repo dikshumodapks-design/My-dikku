@@ -13,7 +13,7 @@
         body {
             font-family: 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #1a0524, #0a0a0c);
-            background-image: url('https://i.ibb.co/qYPCfV1h/Screenshot-2026-11-09-23-23-51-864-com-instagram-android-edit.jpg');
+            background-image: url('https://i.ibb.co/bMyB1b9v/IMG-2e37390f-5416-4c05-a0b2-92c5845a6b82.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -39,20 +39,10 @@
             100% { transform: translateY(0px); }
         }
 
-        /* Neon Edge Glowing Border Animation */
         @keyframes neonBorderGlow {
-            0% {
-                border-color: #ff0055;
-                box-shadow: 0 0 8px #ff0055, inset 0 0 8px rgba(255, 0, 85, 0.3);
-            }
-            50% {
-                border-color: #00f0ff;
-                box-shadow: 0 0 15px #00f0ff, inset 0 0 12px rgba(0, 240, 255, 0.5);
-            }
-            100% {
-                border-color: #ff0055;
-                box-shadow: 0 0 8px #ff0055, inset 0 0 8px rgba(255, 0, 85, 0.3);
-            }
+            0% { border-color: #ff0055; box-shadow: 0 0 8px #ff0055, inset 0 0 8px rgba(255, 0, 85, 0.3); }
+            50% { border-color: #00f0ff; box-shadow: 0 0 15px #00f0ff, inset 0 0 12px rgba(0, 240, 255, 0.5); }
+            100% { border-color: #ff0055; box-shadow: 0 0 8px #ff0055, inset 0 0 8px rgba(255, 0, 85, 0.3); }
         }
 
         @keyframes vipGlow {
@@ -73,6 +63,17 @@
             animation: vipFloat 3s ease-in-out infinite;
         }
 
+        .warning-text {
+            font-size: 10px;
+            font-weight: 900;
+            color: #ff3333;
+            text-align: center;
+            margin-bottom: 6px;
+            width: 100%;
+            text-shadow: 0 0 8px rgba(255, 0, 0, 0.7);
+            letter-spacing: 0.5px;
+        }
+
         .screen {
             width: 100%;
             max-width: 380px;
@@ -81,9 +82,7 @@
             align-items: center;
         }
 
-        .hidden {
-            display: none !important;
-        }
+        .hidden { display: none !important; }
 
         .top-badge-1 {
             background: linear-gradient(90deg, #ff0055, #ff5500);
@@ -152,7 +151,6 @@
         .paytm-btn { background: #00b9f1; color: #000; }
         .qrcode-btn { background: linear-gradient(90deg, #f59e0b, #d97706); color: #fff; box-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
 
-        /* QR Code Modal Popup Styling */
         #qrModal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -318,7 +316,6 @@
     <div id="qrModal" class="hidden">
         <div class="qr-content">
             <div style="font-size: 15px; font-weight: 900; color: #00f0ff; margin-bottom: 10px;">SCAN QR & PAY ₹20</div>
-            <!-- Yahan apna UPI QR Code ka image link daal dena -->
             <img src="YAHAN_APNE_UPI_QR_CODE_KA_IMAGE_LINK_DAALEIN" alt="UPI QR Code" style="width: 180px; height: 180px; border-radius: 8px; background: #fff; padding: 5px; margin-bottom: 12px;">
             <p style="font-size: 11px; color: #ccc; margin-bottom: 15px;">Scan with any UPI app (PhonePe, GPay, Paytm)</p>
             <button onclick="closeQRModal()" style="background: linear-gradient(90deg, #ff0055, #ff5500); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 900; width: 100%; cursor: pointer;">CLOSE QR</button>
@@ -343,8 +340,11 @@
                 <button onclick="openQRModal()" class="upi-btn qrcode-btn">📷 QR CODE</button>
             </div>
 
+            <!-- WARNING TEXT ADDED HERE -->
+            <div class="warning-text">⚠️ DON'T USE SECOND DEVICE WILL BE EXPAIR ONE UTR 3HOURS USE</div>
+
             <input type="text" id="utrBox" class="input-box" placeholder="Enter 12-Digit UTR Number...">
-            <button onclick="unlockVIP()" class="action-btn btn-vip-unlock">VERIFY UTR & UNLOCK VIP 🔓</button>
+            <button id="btnVerifyVIP" onclick="unlockVIP()" class="action-btn btn-vip-unlock">VERIFY UTR & UNLOCK VIP 🔓</button>
         </div>
 
         <!-- GATE 2: FREE ACCESS -->
@@ -381,170 +381,33 @@
 
         <div class="section-title">--- PREMIUM APPS ---</div>
 
-        <!-- 1. Pocket FM -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/bMyB1b9v/IMG-2e37390f-5416-4c05-a0b2-92c5845a6b82.jpg" alt="Pocket FM">
-            <div class="app-title">POCKET FM PREMIUM</div>
-            <a id="link_pocketfm" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
+        <!-- App Cards -->
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/bMyB1b9v/IMG-2e37390f-5416-4c05-a0b2-92c5845a6b82.jpg"><div class="app-title">POCKET FM PREMIUM</div><a id="link_pocketfm" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/W4gVfVc0/IMG-948bd26f-6604-4efe-b6cd-3e8c717bcd1b.jpg"><div class="app-title">KUKU TV PREMIUM</div><a id="link_kukutv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/TqBtYmcd/IMG-a3c52f4c-e8b0-4c56-a2c8-90e37c18ff25.jpg"><div class="app-title">QUIK TV PREMIUM</div><a id="link_quiktv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/YswNK3m/IMG-26f7afd0-86dc-457f-8ee9-ed9309d0cf1f.png"><div class="app-title">STORY TV PREMIUM</div><a id="link_storytv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/CK7C2H12/IMG-b64fb8c2-8907-4b37-9280-757e580babe3.jpg"><div class="app-title">NET SHORT PREMIUM</div><a id="link_netshort" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/8DdVtRfz/IMG-2cbc2dc4-6be6-48e8-b0f1-920aad84bc8c.jpg"><div class="app-title">DASH REEL PREMIUM</div><a id="link_dashreel" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/GvG1dfB9/Screenshot-2026-11-09-13-06-54-399-org-telegram-messenger-edit.jpg"><div class="app-title">ANIME TV PREMIUM</div><a id="link_animetv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/jkfHwNJw/Screenshot-2026-11-09-13-07-10-132-org-telegram-messenger-edit.jpg"><div class="app-title">RIGI TV PREMIUM</div><a id="link_rigitv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/Ng6LdmkJ/Screenshot-2026-11-09-13-14-14-574-org-telegram-messenger-edit.jpg"><div class="app-title">APPLE TV PREMIUM</div><a id="link_appletv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/zTptFnZR/Screenshot-2026-11-09-13-06-07-498-org-telegram-messenger-edit.jpg"><div class="app-title">PRIME VIDEO PREMIUM</div><a id="link_primevideo" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/pvbSYLt5/Screenshot-2026-11-09-13-04-56-919-org-telegram-messenger-edit.jpg"><div class="app-title">VERTIGO TV PREMIUM</div><a id="link_vertigotv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/jvdxbZZq/Screenshot-2026-11-09-13-05-41-375-org-telegram-messenger-edit.jpg"><div class="app-title">DRAMA WAVE PREMIUM</div><a id="link_dramawave" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/N273CzJ5/IMG-e5cede99-1592-4f3f-9fe7-b761d10afdeb.png"><div class="app-title">ALIGHT MOTION PREMIUM</div><a id="link_alightmotion" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/TxSvcPMs/IMG-d41d57d8-0375-4931-a8c0-0472b9c46756.png"><div class="app-title">FAKE PAYTM PREMIUM</div><a id="link_fakepaytm" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/bMP5snnQ/IMG-fcdbfd6d-935e-4bf3-b376-3952f3a40451.png"><div class="app-title">REELIES APP PREMIUM</div><a id="link_reelies" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/G3sttcss/IMG-75de612b-6755-40c7-93c5-f8664ce0faac.png"><div class="app-title">NETFLIX PREMIUM</div><a id="link_netflix" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+        <div class="app-card"><img class="banner-img" src="https://i.ibb.co/bRQBfMxs/IMG-4726b80f-f5bd-41af-a162-2ad8e5dd3f3a.jpg"><div class="app-title">WORKOUT APP PREMIUM</div><a id="link_workout" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
 
-        <!-- 2. Kuku TV -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/W4gVfVc0/IMG-948bd26f-6604-4efe-b6cd-3e8c717bcd1b.jpg" alt="Kuku TV">
-            <div class="app-title">KUKU TV PREMIUM</div>
-            <a id="link_kukutv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
-
-        <!-- 3. Quik TV -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/TqBtYmcd/IMG-a3c52f4c-e8b0-4c56-a2c8-90e37c18ff25.jpg" alt="Quik TV">
-            <div class="app-title">QUIK TV PREMIUM</div>
-            <a id="link_quiktv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
-
-        <!-- 4. Story TV -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/YswNK3m/IMG-26f7afd0-86dc-457f-8ee9-ed9309d0cf1f.png" alt="Story TV">
-            <div class="app-title">STORY TV PREMIUM</div>
-            <a id="link_storytv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
-
-        <!-- 5. Net Short -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/CK7C2H12/IMG-b64fb8c2-8907-4b37-9280-757e580babe3.jpg" alt="Net Short">
-            <div class="app-title">NET SHORT PREMIUM</div>
-            <a id="link_netshort" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
-
-        <!-- 6. Dash Reel -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/8DdVtRfz/IMG-2cbc2dc4-6be6-48e8-b0f1-920aad84bc8c.jpg" alt="Dash Reel">
-            <div class="app-title">DASH REEL PREMIUM</div>
-            <a id="link_dashreel" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
-
-        <!-- 7. Anime TV -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/GvG1dfB9/Screenshot-2026-11-09-13-06-54-399-org-telegram-messenger-edit.jpg" alt="Anime TV">
-            <div class="app-title">ANIME TV PREMIUM</div>
-            <a id="link_animetv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
-
-        <!-- 8. Rigi TV -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/jkfHwNJw/Screenshot-2026-11-09-13-07-10-132-org-telegram-messenger-edit.jpg" alt="Rigi TV">
-            <div class="app-title">RIGI TV PREMIUM</div>
-            <a id="link_rigitv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
-
-        <!-- 9. Apple TV -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/Ng6LdmkJ/Screenshot-2026-11-09-13-14-14-574-org-telegram-messenger-edit.jpg" alt="Apple TV">
-            <div class="app-title">APPLE TV PREMIUM</div>
-            <a id="link_appletv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
-
-        <!-- 10. Prime Video -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/zTptFnZR/Screenshot-2026-11-09-13-06-07-498-org-telegram-messenger-edit.jpg" alt="Prime Video">
-            <div class="app-title">PRIME VIDEO PREMIUM</div>
-            <a id="link_primevideo" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
-
-        <!-- 11. Vertigo TV -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/pvbSYLt5/Screenshot-2026-11-09-13-04-56-919-org-telegram-messenger-edit.jpg" alt="Vertigo TV">
-            <div class="app-title">VERTIGO TV PREMIUM</div>
-            <a id="link_vertigotv" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
-
-        <!-- 12. Drama Wave -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/jvdxbZZq/Screenshot-2026-11-09-13-05-41-375-org-telegram-messenger-edit.jpg" alt="Drama Wave">
-            <div class="app-title">DRAMA WAVE PREMIUM</div>
-            <a id="link_dramawave" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
-
-        <!-- 13. Alight Motion -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/N273CzJ5/IMG-e5cede99-1592-4f3f-9fe7-b761d10afdeb.png" alt="Alight Motion">
-            <div class="app-title">ALIGHT MOTION PREMIUM</div>
-            <a id="link_alightmotion" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
-
-        <!-- 14. Fake Paytm -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/TxSvcPMs/IMG-d41d57d8-0375-4931-a8c0-0472b9c46756.png" alt="Fake Paytm">
-            <div class="app-title">FAKE PAYTM PREMIUM</div>
-            <a id="link_fakepaytm" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
-
-        <!-- 15. Reelies App -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/bMP5snnQ/IMG-fcdbfd6d-935e-4bf3-b376-3952f3a40451.png" alt="Reelies App">
-            <div class="app-title">REELIES APP PREMIUM</div>
-            <a id="link_reelies" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
-
-        <!-- 16. Netflix -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/G3sttcss/IMG-75de612b-6755-40c7-93c5-f8664ce0faac.png" alt="Netflix">
-            <div class="app-title">NETFLIX PREMIUM</div>
-            <a id="link_netflix" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
-
-        <!-- 17. Workout App -->
-        <div class="app-card">
-            <img class="banner-img" src="https://i.ibb.co/bRQBfMxs/IMG-4726b80f-f5bd-41af-a162-2ad8e5dd3f3a.jpg" alt="Workout App">
-            <div class="app-title">WORKOUT APP PREMIUM</div>
-            <a id="link_workout" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-        </div>
-
-        <!-- 18+ VIP SECTION -->
         <div class="adult-section">
             <div class="adult-header">ONLY 18+ VISIT</div>
-
-            <!-- 1. Cine18+ -->
-            <div class="app-card">
-                <img class="banner-img" src="https://i.ibb.co/jkV5q7yy/Screenshot-2026-11-09-13-13-11-986-org-telegram-messenger-edit.jpg" alt="Cine18+">
-                <div class="app-title">CINE18+ PREMIUM</div>
-                <a id="link_cine18" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-            </div>
-
-            <!-- 2. Green Masti 18+ -->
-            <div class="app-card">
-                <img class="banner-img" src="https://i.ibb.co/Z6qw7gg0/Screenshot-2026-11-09-13-07-36-009-org-telegram-messenger-edit.jpg" alt="Green Masti">
-                <div class="app-title">GREEN MASTI 18+ PREMIUM</div>
-                <a id="link_greenmasti" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-            </div>
-
-            <!-- 3. Mood X 18+ -->
-            <div class="app-card">
-                <img class="banner-img" src="https://i.ibb.co/hFBX2g8q/Screenshot-2026-11-09-13-12-34-255-org-telegram-messenger-edit.jpg" alt="Mood X">
-                <div class="app-title">MOOD X 18+ PREMIUM</div>
-                <a id="link_moodx" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-            </div>
-
-            <!-- 4. Moovlix 18+ -->
-            <div class="app-card">
-                <img class="banner-img" src="https://i.ibb.co/TVQd4my/Screenshot-2026-11-09-13-13-26-570-org-telegram-messenger-edit.jpg" alt="Moovlix">
-                <div class="app-title">MOOVLIX 18+ PREMIUM</div>
-                <a id="link_moovlix" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-            </div>
-
-            <!-- 5. Stream Luna 18+ -->
-            <div class="app-card">
-                <img class="banner-img" src="https://i.ibb.co/LhXFvPQV/Screenshot-2026-11-09-13-05-21-013-org-telegram-messenger-edit.jpg" alt="Stream Luna">
-                <div class="app-title">STREAM LUNA 18+ PREMIUM</div>
-                <a id="link_streamluna" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-            </div>
-
-            <!-- 6. Titlee 18+ -->
-            <div class="app-card">
-                <img class="banner-img" src="https://i.ibb.co/M5yv04Xv/Screenshot-2026-11-09-13-13-43-597-org-telegram-messenger-edit.jpg" alt="Titlee">
-                <div class="app-title">TITLEE 18+ PREMIUM</div>
-                <a id="link_titlee" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a>
-            </div>
+            <div class="app-card"><img class="banner-img" src="https://i.ibb.co/jkV5q7yy/Screenshot-2026-11-09-13-13-11-986-org-telegram-messenger-edit.jpg"><div class="app-title">CINE18+ PREMIUM</div><a id="link_cine18" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+            <div class="app-card"><img class="banner-img" src="https://i.ibb.co/Z6qw7gg0/Screenshot-2026-11-09-13-07-36-009-org-telegram-messenger-edit.jpg"><div class="app-title">GREEN MASTI 18+ PREMIUM</div><a id="link_greenmasti" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+            <div class="app-card"><img class="banner-img" src="https://i.ibb.co/hFBX2g8q/Screenshot-2026-11-09-13-12-34-255-org-telegram-messenger-edit.jpg"><div class="app-title">MOOD X 18+ PREMIUM</div><a id="link_moodx" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+            <div class="app-card"><img class="banner-img" src="https://i.ibb.co/TVQd4my/Screenshot-2026-11-09-13-13-26-570-org-telegram-messenger-edit.jpg"><div class="app-title">MOOVLIX 18+ PREMIUM</div><a id="link_moovlix" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+            <div class="app-card"><img class="banner-img" src="https://i.ibb.co/LhXFvPQV/Screenshot-2026-11-09-13-05-21-013-org-telegram-messenger-edit.jpg"><div class="app-title">STREAM LUNA 18+ PREMIUM</div><a id="link_streamluna" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
+            <div class="app-card"><img class="banner-img" src="https://i.ibb.co/M5yv04Xv/Screenshot-2026-11-09-13-13-43-597-org-telegram-messenger-edit.jpg"><div class="app-title">TITLEE 18+ PREMIUM</div><a id="link_titlee" href="#" class="action-btn" target="_blank">DOWNLOAD NOW</a></div>
         </div>
 
         <a href="https://t.me/dikshaagrawal09" class="telegram-btn" target="_blank" style="margin-top: 15px;">
@@ -553,15 +416,9 @@
     </div>
 
     <script>
-        // QR Modal Controls
-        function openQRModal() {
-            document.getElementById('qrModal').classList.remove('hidden');
-        }
-        function closeQRModal() {
-            document.getElementById('qrModal').classList.add('hidden');
-        }
+        function openQRModal() { document.getElementById('qrModal').classList.remove('hidden'); }
+        function closeQRModal() { document.getElementById('qrModal').classList.add('hidden'); }
 
-        // === VIP DIRECT LINKS (MEDIAFIRE) ===
         const VIP_LINKS = {
             pocketfm: "https://www.mediafire.com/file/vs1x0lh1sa8fqxs/DIKSHA_POCKET_FM_PREMIUM_UNLOCK_%25F0%259F%2592%25AF.zip/file",
             kukutv: "https://www.mediafire.com/file/qwswotmtywnkqyj/KUKU_TV_MOD_DIKSHA.zip/file",
@@ -588,7 +445,6 @@
             titlee: "https://www.mediafire.com/file/d2hjf6x7upn2b23/Titlee.apk/file"
         };
 
-        // === FREE SHORT LINKS (SHRINKME) ===
         const FREE_LINKS = {
             pocketfm: "https://shrinkme.click/wFYEyjhb",
             kukutv: "https://shrinkme.click/nujkV",
@@ -615,66 +471,98 @@
             titlee: "https://shrinkme.click/JgWoSs"
         };
 
+        function getDeviceId() {
+            let devId = localStorage.getItem('diksha_device_id');
+            if (!devId) {
+                devId = 'DEV_' + Math.random().toString(36).substring(2, 12) + '_' + Date.now();
+                localStorage.setItem('diksha_device_id', devId);
+            }
+            return devId;
+        }
+
+        async function unlockVIP() {
+            let utr = document.getElementById('utrBox').value.trim();
+            if (utr.length !== 12 || isNaN(utr)) {
+                alert("❌ Kripya valid 12-digit UTR number enter karein!");
+                return;
+            }
+
+            let btn = document.getElementById('btnVerifyVIP');
+            btn.innerText = "VERIFYING REAL UTR... ⏳";
+            btn.disabled = true;
+
+            let deviceId = getDeviceId();
+            let scriptURL = "https://script.google.com/macros/s/AKfycbzLrGqOMCwzN6qprH09wWEXOjqTqcQG0kDYn-awOgB6ZQTqUxTiAZ2wqm1dChDpzGTq3g/exec";
+
+            try {
+                let response = await fetch(`${scriptURL}?utr=${utr}&deviceId=${deviceId}`);
+                let result = await response.json();
+
+                if (result.status === "SUCCESS") {
+                    alert(result.message);
+                    let expiryTime = Date.now() + (3 * 60 * 60 * 1000); // 3 ghante ka timer
+                    localStorage.setItem('vip_expiry', expiryTime);
+                    loadStore('VIP');
+                } else {
+                    alert(result.message);
+                }
+            } catch (err) {
+                alert("⚠️ Server error! Direct check karne me dikkat aai. Dobara try karein.");
+            } finally {
+                btn.innerText = "VERIFY UTR & UNLOCK VIP 🔓";
+                btn.disabled = false;
+            }
+        }
+
         function unlockFree() {
             let userPass = document.getElementById('passBox').value.trim();
             if(!userPass) {
                 alert("Kripya password dalein!");
                 return;
             }
-
             let correctPassword = prompt("Testing ke liye aaj ka active password enter karein:");
-
             if(userPass === correctPassword) {
                 alert("✅ Free Store Unlocked!");
                 loadStore('FREE');
             } else {
-                alert("❌ Wrong Password! Kripya 'GENERATE PASSWORD' button se aaj ka naya password nikalein.");
-            }
-        }
-
-        function unlockVIP() {
-            let utr = document.getElementById('utrBox').value.trim();
-            if(utr.length === 12 && !isNaN(utr)) {
-                alert("🎉 Payment Verified! VIP Access Unlocked with MediaFire Direct Links.");
-                loadStore('VIP');
-            } else {
-                alert("❌ Invalid UTR! Please enter a valid 12-digit UTR number after ₹20 payment.");
+                alert("❌ Wrong Password!");
             }
         }
 
         function loadStore(mode) {
             document.getElementById('screenGateway').classList.add('hidden');
             document.getElementById('screenStore').classList.remove('hidden');
-
             let badge = document.getElementById('statusBadge');
             
             if(mode === 'VIP') {
                 badge.innerText = "👑 VIP UNLOCKED - DIRECT DOWNLOAD NOW";
                 badge.style.background = "linear-gradient(90deg, #10b981, #059669)";
-
                 for(let key in VIP_LINKS) {
                     let el = document.getElementById('link_' + key);
-                    if(el) {
-                        el.href = VIP_LINKS[key];
-                        el.innerText = "⚡ DIRECT DOWNLOAD NOW";
-                        el.className = "action-btn dl-direct";
-                    }
+                    if(el) { el.href = VIP_LINKS[key]; el.innerText = "⚡ DIRECT DOWNLOAD NOW"; el.className = "action-btn dl-direct"; }
                 }
             } else {
                 badge.innerText = "🎁 FREE UNLOCKED - SHRINKME DOWNLOAD";
                 badge.style.background = "linear-gradient(90deg, #ff0055, #ff5500)";
-
                 for(let key in FREE_LINKS) {
                     let el = document.getElementById('link_' + key);
-                    if(el) {
-                        el.href = FREE_LINKS[key];
-                        el.innerText = "🔑 DOWNLOAD VIA SHRINKME";
-                        el.className = "action-btn dl-shrink";
-                    }
+                    if(el) { el.href = FREE_LINKS[key]; el.innerText = "🔑 DOWNLOAD VIA SHRINKME"; el.className = "action-btn dl-shrink"; }
                 }
             }
         }
-    </script>
 
+        // Auto Expiry Check on Page Refresh
+        window.onload = function() {
+            let savedExpiry = localStorage.getItem('vip_expiry');
+            if (savedExpiry) {
+                if (Date.now() < parseInt(savedExpiry)) {
+                    loadStore('VIP');
+                } else {
+                    localStorage.removeItem('vip_expiry');
+                    alert("⏰ Aapka 3-Ghante ka VIP Session Expire ho gaya hai. Dobara VIP access lene ke liye new UTR enter karein.");
+                }
+            }
+        };
+    </script>
 </body>
 </html>
