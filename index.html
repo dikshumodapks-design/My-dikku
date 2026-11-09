@@ -359,7 +359,7 @@
             <div class="title-text">🎁 FREE ACCESS (PASSWORD LOGIN)</div>
             <p style="font-size: 11px; color: #ccc; margin-bottom: 8px;">Generate daily password (changes every 24 hours).</p>
             
-            <a href="https://sub4unlock.io/Qr1cI" target="_blank" class="action-btn btn-free-gen">
+            <a href="https://script.google.com/macros/s/AKfycbxRGUCPTuElwAUO15otvo9AxNdkv2RKFSjdocacd21n4hVvuRAVgOsAfrScMkX_5qET/exec" target="_blank" class="action-btn btn-free-gen">
                 GENERATE PASSWORD 🔑
             </a>
 
@@ -368,7 +368,7 @@
             </a>
 
             <input type="password" id="passBox" class="input-box" style="border-color: #00f0ff; margin-top: 6px;" placeholder="Enter Today's Password...">
-            <button onclick="unlockFree()" class="action-btn btn-free-login">LOGIN FREE STORE 🚀</button>
+            <button id="btnVerifyFree" onclick="unlockFree()" class="action-btn btn-free-login">LOGIN FREE STORE 🚀</button>
         </div>
 
         <a href="https://t.me/dikshaagrawal09" class="telegram-btn" target="_blank">
@@ -526,18 +526,35 @@
             }
         }
 
-        function unlockFree() {
+        async function unlockFree() {
             let userPass = document.getElementById('passBox').value.trim();
             if(!userPass) {
-                alert("Kripya password dalein!");
+                alert("❌ Kripya aaj ka Password enter karein!");
                 return;
             }
-            let correctPassword = prompt("Testing ke liye aaj ka active password enter karein:");
-            if(userPass === correctPassword) {
-                alert("✅ Free Store Unlocked!");
-                loadStore('FREE');
-            } else {
-                alert("❌ Wrong Password!");
+
+            let btn = document.getElementById('btnVerifyFree');
+            btn.innerText = "VERIFYING PASSWORD... ⏳";
+            btn.disabled = true;
+
+            let freeScriptURL = "https://script.google.com/macros/s/AKfycbxRGUCPTuElwAUO15otvo9AxNdkv2RKFSjdocacd21n4hVvuRAVgOsAfrScMkX_5qET/exec";
+
+            try {
+                let response = await fetch(`${freeScriptURL}?pass=${encodeURIComponent(userPass)}`);
+                let result = await response.json();
+
+                if(result.status === "SUCCESS" || result.valid === true) {
+                    alert("✅ Free Store Unlocked Successfully!");
+                    loadStore('FREE');
+                } else {
+                    alert("❌ WRONG PASSWORD! Kripya aaj ka active 24-hour password enter karein.");
+                }
+            } catch(err) {
+                // Fallback check if script doesn't return direct JSON format
+                alert("⚠️ Password Verification Server Error. Retry karein!");
+            } finally {
+                btn.innerText = "LOGIN FREE STORE 🚀";
+                btn.disabled = false;
             }
         }
 
