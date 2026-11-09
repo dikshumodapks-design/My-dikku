@@ -60,6 +60,18 @@
             100% { text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055; box-shadow: 0 0 15px rgba(255, 0, 85, 0.4); }
         }
 
+        .creator-tag {
+            font-size: 13px;
+            font-weight: 800;
+            color: #ff00ff;
+            text-align: center;
+            margin-top: -4px;
+            margin-bottom: 10px;
+            width: 100%;
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+            animation: vipFloat 3s ease-in-out infinite;
+        }
+
         .screen {
             width: 100%;
             max-width: 380px;
@@ -131,11 +143,34 @@
             font-weight: 800;
             font-size: 12px;
             text-align: center;
+            border: none;
+            cursor: pointer;
         }
         .gpay-btn { background: #1a73e8; }
         .phonepe-btn { background: #5f259f; }
         .paytm-btn { background: #00b9f1; color: #000; }
-        .navi-btn { background: #00c853; }
+        .qrcode-btn { background: linear-gradient(90deg, #f59e0b, #d97706); color: #fff; box-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
+
+        /* QR Code Modal Popup Styling */
+        #qrModal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .qr-content {
+            background: #141419;
+            border: 2px solid #00f0ff;
+            border-radius: 16px;
+            padding: 20px;
+            width: 90%;
+            max-width: 320px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+        }
 
         .input-box {
             width: 100%;
@@ -182,7 +217,6 @@
             text-shadow: 0 0 10px #00f0ff;
         }
 
-        /* Compact & Neon Glowing Edges for App Cards */
         .app-card {
             background: #141419;
             border: 2px solid #ff0055;
@@ -194,12 +228,11 @@
             animation: vipFloat 4s ease-in-out infinite, neonBorderGlow 3s infinite;
         }
 
-        /* Logo image setting fix: ab pura logo bina kate fit dikhega */
         .banner-img {
             width: 100%;
             height: 110px;
-            object-fit: contain; /* Yeh ensure karega ki image zoom hokar kate nahi */
-            background: #0d0d12;   /* Logo ke aas-paas ka background clean dark rahega */
+            object-fit: contain;
+            background: #0d0d12;
             border-radius: 8px;
             margin-bottom: 8px;
             padding: 4px;
@@ -280,9 +313,21 @@
 
     <div class="overlay"></div>
 
+    <!-- QR CODE MODAL POPUP -->
+    <div id="qrModal" class="hidden">
+        <div class="qr-content">
+            <div style="font-size: 15px; font-weight: 900; color: #00f0ff; margin-bottom: 10px;">SCAN QR & PAY ₹20</div>
+            <!-- Yahan apna UPI QR Code ka image link daal dena -->
+            <img src="https://i.ibb.co/hRdRDYrs/Screenshot-2026-11-09-22-29-42-908-com-phonepe-app-edit.jpg" alt="UPI QR Code" style="width: 180px; height: 180px; border-radius: 8px; background: #fff; padding: 5px; margin-bottom: 12px;">
+            <p style="font-size: 11px; color: #ccc; margin-bottom: 15px;">Scan with any UPI app (PhonePe, GPay, Paytm)</p>
+            <button onclick="closeQRModal()" style="background: linear-gradient(90deg, #ff0055, #ff5500); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 900; width: 100%; cursor: pointer;">CLOSE QR</button>
+        </div>
+    </div>
+
     <!-- ================= SCREEN 1: GATEWAY ================= -->
     <div id="screenGateway" class="screen">
         <div class="top-badge-1">DIKSHA STORE 09 VIP GATEWAY</div>
+        <div class="creator-tag">❈☆CREATOR DEVNA ❀✭</div>
         <div class="top-badge-2">⚡ CHOOSE YOUR ACCESS MODE BELOW ⚡</div>
 
         <!-- GATE 1: VIP ACCESS (₹20 DIRECT) -->
@@ -291,27 +336,25 @@
             <p style="font-size: 11px; color: #ccc; margin-bottom: 8px;">Pay ₹20 & enter UTR to get Direct Downloads!</p>
             
             <div class="upi-grid">
-                <a href="upi://pay?pa=YOUR_UPI_ID@paytm&pn=DikshaStore&am=20.00&cu=INR" class="upi-btn phonepe-btn">PhonePe</a>
-                <a href="upi://pay?pa=YOUR_UPI_ID@paytm&pn=DikshaStore&am=20.00&cu=INR" class="upi-btn gpay-btn">Google Pay</a>
-                <a href="upi://pay?pa=YOUR_UPI_ID@paytm&pn=DikshaStore&am=20.00&cu=INR" class="upi-btn paytm-btn">Paytm</a>
-                <a href="upi://pay?pa=YOUR_UPI_ID@paytm&pn=DikshaStore&am=20.00&cu=INR" class="upi-btn navi-btn">Navi UPI</a>
+                <a href="upi://pay?pa=9343479805@ybl&pn=DikshaStore&am=20.00&cu=INR" class="upi-btn phonepe-btn">PhonePe</a>
+                <a href="upi://pay?pa=9343479805@ybl&pn=DikshaStore&am=20.00&cu=INR" class="upi-btn gpay-btn">Google Pay</a>
+                <a href="upi://pay?pa=9343479805@ybl&pn=DikshaStore&am=20.00&cu=INR" class="upi-btn paytm-btn">Paytm</a>
+                <button onclick="openQRModal()" class="upi-btn qrcode-btn">📷 QR CODE</button>
             </div>
 
             <input type="text" id="utrBox" class="input-box" placeholder="Enter 12-Digit UTR Number...">
             <button onclick="unlockVIP()" class="action-btn btn-vip-unlock">VERIFY UTR & UNLOCK VIP 🔓</button>
         </div>
 
-        <!-- GATE 2: FREE ACCESS (GOOGLE SCRIPT & YOUTUBE GUIDE) -->
+        <!-- GATE 2: FREE ACCESS -->
         <div class="box-card free-box">
             <div class="title-text">🎁 FREE ACCESS (PASSWORD LOGIN)</div>
             <p style="font-size: 11px; color: #ccc; margin-bottom: 8px;">Generate daily password (changes every 24 hours).</p>
             
-            <!-- GENERATE PASSWORD (Google Script Link) -->
             <a href="https://script.google.com/macros/s/AKfycbxRGUCPTuElwAUO15otvo9AxNdkv2RKFSjdocacd21n4hVvuRAVgOsAfrScMkX_5qET/exec" target="_blank" class="action-btn btn-free-gen">
                 GENERATE PASSWORD 🔑
             </a>
 
-            <!-- HOW TO GENERATE PASSWORD (YouTube Video Link) -->
             <a href="YOUR_YOUTUBE_VIDEO_LINK_HERE" target="_blank" class="action-btn btn-free-how">
                 HOW GENERATE PASSWORD - पासवर्ड कैसे जनरेट करें 📺
             </a>
@@ -320,12 +363,10 @@
             <button onclick="unlockFree()" class="action-btn btn-free-login">LOGIN FREE STORE 🚀</button>
         </div>
 
-        <!-- Telegram Join Button -->
         <a href="https://t.me/dikshaagrawal09" class="telegram-btn" target="_blank">
             📢 JOIN TO TELEGRAM FOR MORE UPDATES
         </a>
 
-        <!-- Kodular App: DIKSHA MOD 09 Download Button -->
         <a href="YOUR_KODULAR_APP_DOWNLOAD_LINK_HERE" class="kodular-app-btn" target="_blank">
             📥 DOWNLOAD DIKSHA MOD 09 APP
         </a>
@@ -335,6 +376,7 @@
     <div id="screenStore" class="screen hidden">
         
         <div id="statusBadge" class="top-badge-1">STORE LOADED</div>
+        <div class="creator-tag">❈☆CREATOR DEVNA ❀✭</div>
 
         <div class="section-title">--- PREMIUM APPS ---</div>
 
@@ -510,6 +552,14 @@
     </div>
 
     <script>
+        // QR Modal Controls
+        function openQRModal() {
+            document.getElementById('qrModal').classList.remove('hidden');
+        }
+        function closeQRModal() {
+            document.getElementById('qrModal').classList.add('hidden');
+        }
+
         // === VIP DIRECT LINKS (MEDIAFIRE) ===
         const VIP_LINKS = {
             pocketfm: "https://www.mediafire.com/file/vs1x0lh1sa8fqxs/DIKSHA_POCKET_FM_PREMIUM_UNLOCK_%25F0%259F%2592%25AF.zip/file",
@@ -539,29 +589,29 @@
 
         // === FREE SHORT LINKS (SHRINKME) ===
         const FREE_LINKS = {
-            pocketfm: "SHRINKME_LINK_HERE",
-            kukutv: "SHRINKME_LINK_HERE",
-            quiktv: "SHRINKME_LINK_HERE",
-            storytv: "SHRINKME_LINK_HERE",
-            netshort: "SHRINKME_LINK_HERE",
-            dashreel: "SHRINKME_LINK_HERE",
-            animetv: "SHRINKME_LINK_HERE",
-            rigitv: "SHRINKME_LINK_HERE",
+            pocketfm: "https://shrinkme.click/wFYEyjhb",
+            kukutv: "https://shrinkme.click/nujkV",
+            quiktv: "https://shrinkme.click/7Vl4chHY",
+            storytv: "https://shrinkme.click/R4Udb",
+            netshort: "https://shrinkme.click/YigVaQ",
+            dashreel: "https://shrinkme.click/Ke1oa2D",
+            animetv: "https://shrinkme.click/nzGuNsGE",
+            rigitv: "https://shrinkme.click/pCGcPa",
             appletv: "SHRINKME_LINK_HERE",
-            primevideo: "SHRINKME_LINK_HERE",
-            vertigotv: "SHRINKME_LINK_HERE",
-            dramawave: "SHRINKME_LINK_HERE",
+            primevideo: "https://shrinkme.click/PbLP",
+            vertigotv: "https://shrinkme.click/vPgPYDxF",
+            dramawave: "https://shrinkme.click/CBMVG9",
             alightmotion: "SHRINKME_LINK_HERE",
-            fakepaytm: "SHRINKME_LINK_HERE",
+            fakepaytm: "https://shrinkme.click/TyXqMIQ",
             reelies: "SHRINKME_LINK_HERE",
             netflix: "SHRINKME_LINK_HERE",
-            workout: "SHRINKME_LINK_HERE",
-            cine18: "SHRINKME_LINK_HERE",
-            greenmasti: "SHRINKME_LINK_HERE",
-            moodx: "SHRINKME_LINK_HERE",
-            moovlix: "SHRINKME_LINK_HERE",
-            streamluna: "SHRINKME_LINK_HERE",
-            titlee: "SHRINKME_LINK_HERE"
+            workout: "https://shrinkme.click/LG9uqf",
+            cine18: "https://shrinkme.click/H4Kz",
+            greenmasti: "https://shrinkme.click/ZmHVl",
+            moodx: "https://shrinkme.click/bngxxcBa",
+            moovlix: "https://shrinkme.click/pcjlOQa",
+            streamluna: "https://shrinkme.click/x3JiBQ3",
+            titlee: "https://shrinkme.click/JgWoSs"
         };
 
         function unlockFree() {
