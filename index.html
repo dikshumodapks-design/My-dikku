@@ -206,7 +206,6 @@
         .btn-free-how { background: linear-gradient(90deg, #d97706, #b45309); font-size: 13px; }
         .btn-free-login { background: linear-gradient(90deg, #9333ea, #c084fc); }
         
-        /* How to free download guide button style */
         .btn-how-download {
             background: linear-gradient(90deg, #ff0055, #ff5500);
             box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
@@ -359,6 +358,7 @@
             <div class="title-text">🎁 FREE ACCESS (PASSWORD LOGIN)</div>
             <p style="font-size: 11px; color: #ccc; margin-bottom: 8px;">Generate daily password (changes every 24 hours).</p>
             
+            <!-- Sub4Unlock Link Added Here -->
             <a href="https://sub4unlock.io/Qr1cI" target="_blank" class="action-btn btn-free-gen">
                 GENERATE PASSWORD 🔑
             </a>
@@ -386,7 +386,6 @@
         <div id="statusBadge" class="top-badge-1">STORE LOADED</div>
         <div class="creator-tag">❈☆CREATOR DEVNA ❀✭</div>
 
-        <!-- HOW TO FREE DOWNLOAD BUTTON ADDED HERE -->
         <a href="YOUR_YOUTUBE_OR_TUTORIAL_LINK_HERE" target="_blank" class="action-btn btn-how-download">
             📺 HOW TO FREE DOWNLOAD CLICK HERE
         </a>
@@ -512,7 +511,7 @@
 
                 if (result.status === "SUCCESS") {
                     alert(result.message);
-                    let expiryTime = Date.now() + (3 * 60 * 60 * 1000); // 3 ghante ka timer
+                    let expiryTime = Date.now() + (3 * 60 * 60 * 1000);
                     localStorage.setItem('vip_expiry', expiryTime);
                     loadStore('VIP');
                 } else {
@@ -550,7 +549,6 @@
                     alert("❌ WRONG PASSWORD! Kripya aaj ka active 24-hour password enter karein.");
                 }
             } catch(err) {
-                // Fallback check if script doesn't return direct JSON format
                 alert("⚠️ Password Verification Server Error. Retry karein!");
             } finally {
                 btn.innerText = "LOGIN FREE STORE 🚀";
@@ -580,7 +578,6 @@
             }
         }
 
-        // Auto Expiry Check on Page Refresh
         window.onload = function() {
             let savedExpiry = localStorage.getItem('vip_expiry');
             if (savedExpiry) {
