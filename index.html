@@ -359,7 +359,7 @@
             <p style="font-size: 11px; color: #ccc; margin-bottom: 8px;">Generate daily password (changes every 24 hours).</p>
             
             <!-- Sub4Unlock Link -->
-            <a href="https://script.google.com/macros/s/AKfycbz7Xb34LcE3_Srxk861bySIxrXvDP71d_ebGND4QeyPN9hOU72gy37nIpGXLBvPD5qmAw/exec" target="_blank" class="action-btn btn-free-gen">
+            <a href="https://script.google.com/macros/s/AKfycbyZMQECare5pEp6MwWpX6AxAjU7OiFbvu9oiQsXQ93W2BguKjPiOfiIZxtnM8q2oU8o/exec" target="_blank" class="action-btn btn-free-gen">
                 GENERATE PASSWORD 🔑
             </a>
 
@@ -525,7 +525,7 @@
             }
         }
 
-        async function unlockFree() {
+        function unlockFree() {
             let userPass = document.getElementById('passBox').value.trim();
             if(!userPass) {
                 alert("❌ Kripya aaj ka Password enter karein!");
@@ -536,14 +536,13 @@
             btn.innerText = "VERIFYING PASSWORD... ⏳";
             btn.disabled = true;
 
-            let freeScriptURL = "https://script.google.com/macros/s/AKfycbz7Xb34LcE3_Srxk861bySIxrXvDP71d_ebGND4QeyPN9hOU72gy37nIpGXLBvPD5qmAw/exec";
+            let freeScriptURL = "https://script.google.com/macros/s/AKfycbyZMQECare5pEp6MwWpX6AxAjU7OiFbvu9oiQsXQ93W2BguKjPiOfiIZxtnM8q2oU8o/exec";
 
-            try {
-                let response = await fetch(`${freeScriptURL}?pass=${encodeURIComponent(userPass)}`, {
-                    redirect: 'follow'
-                });
-                let textData = await response.text();
-                let result = JSON.parse(textData);
+            let script = document.createElement('script');
+            window.handlePassResponse = function(result) {
+                btn.innerText = "LOGIN FREE STORE 🚀";
+                btn.disabled = false;
+                document.body.removeChild(script);
 
                 if(result.status === "SUCCESS" || result.valid === true) {
                     alert("✅ Free Store Unlocked Successfully!");
@@ -551,12 +550,16 @@
                 } else {
                     alert("❌ WRONG PASSWORD! Kripya aaj ka active 24-hour password enter karein.");
                 }
-            } catch(err) {
-                alert("⚠️ Password Verification Server Error. Retry karein!");
-            } finally {
+            };
+
+            script.src = `${freeScriptURL}?pass=${encodeURIComponent(userPass)}&callback=handlePassResponse`;
+            script.onerror = function() {
                 btn.innerText = "LOGIN FREE STORE 🚀";
                 btn.disabled = false;
-            }
+                alert("⚠️ Server Error. Kripya dobara try karein!");
+            };
+
+            document.body.appendChild(script);
         }
 
         function loadStore(mode) {
