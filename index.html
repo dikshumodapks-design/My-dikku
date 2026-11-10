@@ -358,8 +358,8 @@
             <div class="title-text">🎁 FREE ACCESS (PASSWORD LOGIN)</div>
             <p style="font-size: 11px; color: #ccc; margin-bottom: 8px;">Generate daily password (changes every 24 hours).</p>
             
-            <!-- Sub4Unlock Link Added Here -->
-            <a href="https://script.google.com/macros/s/AKfycbxtnXaelaain4xD1jnlyQrMFG2pIpJjT56ZtdXebqB5OAwgvx4nc9lP_qUP9JaFDMcHbA/exec" target="_blank" class="action-btn btn-free-gen">
+            <!-- Sub4Unlock Link -->
+            <a href="https://script.google.com/macros/s/AKfycbz7Xb34LcE3_Srxk861bySIxrXvDP71d_ebGND4QeyPN9hOU72gy37nIpGXLBvPD5qmAw/exec" target="_blank" class="action-btn btn-free-gen">
                 GENERATE PASSWORD 🔑
             </a>
 
@@ -536,11 +536,14 @@
             btn.innerText = "VERIFYING PASSWORD... ⏳";
             btn.disabled = true;
 
-            let freeScriptURL = "https://script.google.com/macros/s/AKfycbxRGUCPTuElwAUO15otvo9AxNdkv2RKFSjdocacd21n4hVvuRAVgOsAfrScMkX_5qET/exec";
+            let freeScriptURL = "https://script.google.com/macros/s/AKfycbz7Xb34LcE3_Srxk861bySIxrXvDP71d_ebGND4QeyPN9hOU72gy37nIpGXLBvPD5qmAw/exec";
 
             try {
-                let response = await fetch(`${freeScriptURL}?pass=${encodeURIComponent(userPass)}`);
-                let result = await response.json();
+                let response = await fetch(`${freeScriptURL}?pass=${encodeURIComponent(userPass)}`, {
+                    redirect: 'follow'
+                });
+                let textData = await response.text();
+                let result = JSON.parse(textData);
 
                 if(result.status === "SUCCESS" || result.valid === true) {
                     alert("✅ Free Store Unlocked Successfully!");
